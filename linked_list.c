@@ -2,29 +2,29 @@
 
 t_node *node_create(long value)
 {
-    t_node *node;
+	t_node *node;
 
 	node = (t_node *)malloc(sizeof(t_node));
-    if (!node)
-        return (NULL);
-    node->val = value;
-    node->next = NULL;
+	if (!node)
+		return (NULL);
+	node->val = value;
+	node->next = NULL;
 	node->prev = NULL;
-    return (node);
+	return (node);
 }
 
 s_stack *stack_create(long value)
 {
-    s_stack *stack;
+	s_stack *stack;
 
 	stack = (s_stack *)malloc(sizeof(s_stack));
-    if (!stack)
-        return (NULL);
-    stack->head = node_create(value);
+	if (!stack)
+		return (NULL);
+	stack->head = node_create(value);
 	stack->head->next = stack->head;
 	stack->head->prev = stack->head;
 	stack->size = 1;
-    return (stack);
+	return (stack);
 }
 
 void	push(s_stack *stack, long value)
@@ -41,5 +41,25 @@ void	push(s_stack *stack, long value)
 	stack->size++;
 }
 
+void	s(s_stack *stack_x)
+{
+	t_node *swaped;
 
+	if (stack_x->size < 2)
+		return;
+	swaped = stack_x->head->next;
+	swaped->prev = stack_x->head->prev;
+	stack_x->head->next = swaped->next;
+	swaped->next->prev = stack_x->head->prev;
+	stack_x->head->prev->next = swaped;
+	swaped->next = stack_x->head;
+	stack_x->head->prev = swaped;
+	stack_x->head = swaped;
+}
+
+void	ss(s_stack *stack_a, s_stack *stack_b)
+{
+	s(stack_a);
+	s(stack_b);
+}
 
