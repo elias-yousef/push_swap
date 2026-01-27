@@ -7,7 +7,7 @@ t_node *node_create(long value)
 	node = (t_node *)malloc(sizeof(t_node));
     if (!node)
         return (NULL);
-    node->value = value;
+    node->val = value;
     node->next = NULL;
 	node->prev = NULL;
     return (node);
@@ -17,7 +17,7 @@ s_stack *stack_create(long value)
 {
     s_stack *stack;
 
-	stack = (s_stack *)malloc(sizeof(s_stack))
+	stack = (s_stack *)malloc(sizeof(s_stack));
     if (!stack)
         return (NULL);
     stack->head = node_create(value);
