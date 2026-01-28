@@ -18,4 +18,15 @@ typedef struct s_stack
 	t_node	*head;
 }	s_stack;
 
+s_stack *stack_create();
+void	add_node(s_stack *stack, long value);
+void	sx(s_stack *stack_x);
+void	ss(s_stack *stack_a, s_stack *stack_b);
+
+void	px(s_stack *from, s_stack *to);
+void	rx(s_stack *stack_x);
+void	rr(s_stack *s1, s_stack *s2);
+void	rrx(s_stack *stack_x);
+void	rrrr(s_stack *s1, s_stack *s2);
+
 #endif
