@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-s_stack *stack_create(long value)
+s_stack *stack_create()
 {
 	s_stack *stack;
 
@@ -28,15 +28,16 @@ void	add_node(s_stack *stack, long value)
 	}
 	else
 	{
-		stack->head->prev = new_node->prev;
-		stack->head->next = new_node->prev;
+		stack->head->prev->next = new_node;
+		new_node->prev = stack->head->prev;
 		new_node->next = stack->head;
 		stack->head->prev = new_node;
+		new_node->val = value;
 	}
 	stack->size++;
 }
 
-void	sa(s_stack *stack_a) //swap the contant not the nodes
+void	sa(s_stack *stack_a)
 {
 	long	temp;
 	if (stack_a->size < 2)
@@ -66,7 +67,7 @@ void	ra(s_stack *stack_a)
 {
 	while (stack_a->head->next != stack_a->head)
 	{
-		stack_a->head
+		stack_a->head 
 	}
 }
 
