@@ -50,7 +50,7 @@ void	rrx(s_stack *stack_x)
 	stack_x->head = stack_x->head->prev;
 }
 
-void	rrrr(s_stack *s1, s_stack *s2)
+void	rrr(s_stack *s1, s_stack *s2)
 {
 	rrx(s1);
 	rrx(s2);

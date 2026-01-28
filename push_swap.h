@@ -18,6 +18,27 @@ typedef struct s_stack
 	t_node	*head;
 }	s_stack;
 
+typedef struct s_bench
+{
+	int	status;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_bench;
+typedef struct s_config
+{
+	int		mod;
+	t_bench	*bench;
+}	t_config;
+
 s_stack *stack_create();
 void	add_node(s_stack *stack, long value);
 void	sx(s_stack *stack_x);
@@ -28,5 +49,9 @@ void	rx(s_stack *stack_x);
 void	rr(s_stack *s1, s_stack *s2);
 void	rrx(s_stack *stack_x);
 void	rrrr(s_stack *s1, s_stack *s2);
+
+int	ft_atoi(const char *str);
+int	len(char *str);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
