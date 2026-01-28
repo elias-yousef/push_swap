@@ -1,65 +1,72 @@
 #include "push_swap.h"
 
-t_node *node_create(long value)
-{
-	t_node *node;
-
-	node = (t_node *)malloc(sizeof(t_node));
-	if (!node)
-		return (NULL);
-	node->val = value;
-	node->next = NULL;
-	node->prev = NULL;
-	return (node);
-}
-
 s_stack *stack_create(long value)
 {
 	s_stack *stack;
 
-	stack = (s_stack *)malloc(sizeof(s_stack));
+	stack = malloc(sizeof(s_stack));
 	if (!stack)
 		return (NULL);
-	stack->head = node_create(value);
-	stack->head->next = stack->head;
-	stack->head->prev = stack->head;
-	stack->size = 1;
+	stack->head = NULL;
+	stack->size = 0;
 	return (stack);
 }
 
-void	push(s_stack *stack, long value)
+void	add_node(s_stack *stack, long value)
 {
 	t_node	*new_node;
 
-	new_node = node_create(value);
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return ;
-	new_node->next = stack->head;
-	stack->head->prev->next = new_node;
-	new_node->prev = stack->head->prev;
-	stack->head->prev = new_node;
+	if (stack->size == 0)
+	{
+		new_node->next = new_node;
+		new_node->prev = new_node;
+		new_node->val = value;
+		stack->head = new_node;
+	}
+	else
+	{
+		stack->head->prev = new_node->prev;
+		stack->head->next = new_node->prev;
+		new_node->next = stack->head;
+		stack->head->prev = new_node;
+	}
 	stack->size++;
 }
 
-void	s(s_stack *stack_x)
+void	sa(s_stack *stack_a) //swap the contant not the nodes
 {
-	t_node *swaped;
+	long	temp;
+	if (stack_a->size < 2)
+		return ;
+	temp = stack_a->head->val;
+	stack_a->head->val = stack_a->head->next->val;
+	stack_a->head->next->val = temp;
+}
 
-	if (stack_x->size < 2)
-		return;
-	swaped = stack_x->head->next;
-	swaped->prev = stack_x->head->prev;
-	stack_x->head->next = swaped->next;
-	swaped->next->prev = stack_x->head->prev;
-	stack_x->head->prev->next = swaped;
-	swaped->next = stack_x->head;
-	stack_x->head->prev = swaped;
-	stack_x->head = swaped;
+void	sb(s_stack *stack_b)
+{
+	long	temp;
+	if (stack_b->size < 2)
+		return ;
+	temp = stack_b->head->val;
+	stack_b->head->val = stack_b->head->next->val;
+	stack_b->head->next->val = temp;
 }
 
 void	ss(s_stack *stack_a, s_stack *stack_b)
 {
-	s(stack_a);
-	s(stack_b);
+	sa(stack_a);
+	sb(stack_b);
+}
+
+void	ra(s_stack *stack_a)
+{
+	while (stack_a->head->next != stack_a->head)
+	{
+		stack_a->head
+	}
 }
 
