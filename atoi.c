@@ -12,7 +12,24 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	num_lenth(char	*str)
+{
+	int	count;
+	int	it;
+
+	it = 0;
+	count = 0;
+	if (str[it]== '-' || str[it] == '+')
+		it++;
+	while (str[it])
+	{
+		count++;
+		it++;
+	}
+	return (count);
+}
+
+long	ft_atoi(const char *str)
 {
 	int		i;
 	int		sign;
@@ -21,8 +38,8 @@ int	ft_atoi(const char *str)
 	i = 0;
 	result = 0;
 	sign = 1;
-	while (ft_isspace(str[i]))
-		i++;
+	if (num_lenth(str) > 10)
+		return (12345678910);
 	if (str[i] == '-')
 	{
 		sign = -1;

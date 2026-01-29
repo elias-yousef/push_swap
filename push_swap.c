@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/29 11:56:21 by mkhashan          #+#    #+#             */
+/*   Updated: 2026/01/29 14:46:44 by mkhashan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	ValidNum(char *str)
@@ -9,11 +21,10 @@ int	ValidNum(char *str)
 	if (str[it] == '+' || str[it] == '-')
 	{
 		it++;
-		return (0);
 	}
 	while (str[it])
 	{
-		if (str[it] <'0' || str[it] > '9')
+		if (str[it] < '0' || str[it] > '9')
 			return (0);
 		it++;
 	}
@@ -32,7 +43,7 @@ int	can_2add_if(s_stack *stack_a, char *str)
 	it = 0;
 	num = 0;
 	if (ValidNum(str))
-		num = ft_atoi(str);
+		num = (int)ft_atoi(str);
 	else
 		return(num);
 	temp = stack_a->head;
@@ -65,32 +76,49 @@ int	check_config(char *str)
 	else
 		return (-1);
 }
-int main(int argc, char **argv)
-{
-	int			it;
-	char		*str;
-	t_config	*conf;
-	s_stack		*stack_a;
 
-	stack_a = stack_create();
+s_stack	*Parser(int argc, char **argv, t_config *conf , s_stack *stack_a)
+{
+	int		it;
+	char	*str;
+
 	it = 1;
-	conf->mod = 3;
 	while (it < argc)
 	{
 		str = argv[it];
 		if (str[0] == '-' || str[1] == '-')
 		{
 			if (check_config(str) == -1)
-				return (0);//print ERROR\N ON trderror and retrun
+				return (NULL);
 			else if (chink_config(str) == 4)
-				conf->bench->status = 1;
+				conf->bench.status = 1;
 			else
 				conf->mod = chink_config(str);
 		}
 		else
 		{
 			if (can_2add_if(stack_a, str) == 0)
-				return (0);//print ERROR\N ON trderror and retrun
+				return (NULL);
 		}
+		it++;
 	}
+	return (stack_a);
+}
+
+int main(int argc, char **argv)
+{
+	int			it;
+	char		*str;
+	t_config	conf;
+	s_stack		*stack_a;
+
+	conf.mod = 3;
+	stack_a = stack_create();
+	if (Parser(argc, argv, &conf, stack_a) == NULL)
+	{
+		//print ERROR\N ON stderror
+		clear_stack(stack_a);
+		return (1);
+	}
+	start_sort(stack_a, &conf);
 }

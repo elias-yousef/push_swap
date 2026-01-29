@@ -24,7 +24,7 @@ s_stack *stack_create()
 	return (stack);
 }
 
-void	add_node(s_stack *stack, long value)
+void	add_node(s_stack *stack, int value)
 {
 	t_node	*new_node;
 
@@ -46,6 +46,24 @@ void	add_node(s_stack *stack, long value)
 		stack->head->prev = new_node;
 	}
 	stack->size++;
+}
+
+void	clear_stack(s_stack *stack_x)
+{
+	s_stack	*temp;
+	int		it;
+
+	it = 0;
+	while (it < stack_x->size)
+	{
+		temp = stack_x->head->next;
+		stack_x->head->next = NULL;
+		stack_x->head->prev = NULL;
+		free(stack_x->head);
+		stack_x->head = temp;
+		it++;
+	}
+	free(stack_x);
 }
 
 void	sx(s_stack *stack_x)
