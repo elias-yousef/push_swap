@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-long	idx_val(s_stack *stack_a, long idx)
+int	idx_val(s_stack *stack_a, int idx)
 {
-	long	it;
+	int	it;
 	t_node	*temp;
 
 	it = 0;
@@ -27,12 +27,12 @@ long	idx_val(s_stack *stack_a, long idx)
 }
 
 
-long	compute_disorder(s_stack *stack_a)
+double	compute_disorder(s_stack *stack_a)
 {
 	double	mistakes;
 	double	total;
-	long	it1;
-	long	it2;
+	int	it1;
+	int	it2;
 
 	mistakes = 0;
 	total = 0;
