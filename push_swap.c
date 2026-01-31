@@ -6,7 +6,7 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:21 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/29 14:46:44 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/01/31 13:30:46 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_config(char *str)
 	int	lenth;
 
 	lenth = len(str);
-	if (lenth == 7 && ft_strncmp("bench", str, lenth) == 0)
+	if (lenth == 7 && ft_strncmp("--bench", str, lenth) == 0)
 		retrun (4);
 	else if (lenth == 8 && ft_strncmp("--simple", str, lenth) == 0)
 		return (0);
@@ -91,7 +91,7 @@ s_stack	*Parser(int argc, char **argv, t_config *conf , s_stack *stack_a)
 			if (check_config(str) == -1)
 				return (NULL);
 			else if (chink_config(str) == 4)
-				conf->bench.status = 1;
+				conf->bench = 1;
 			else
 				conf->mod = chink_config(str);
 		}

@@ -61,8 +61,28 @@ void	indexer(s_stack *stack_a)
 	}
 }
 
+void	f_p_s(s_stack *stack_a, s_stack *stack_b)
+{
+	int		it;
+	int		it2;
 
-void	m_sort(s_stack *stack_a, s_stack *stack_b, t_config *conf)
+	it2 = 1;
+	while (stack_a != NULL)
+	{
+		it = 0;
+		while (it < stack_a->size)
+		{
+			if (stack_a->head->val < (stack_a->size/10)*it2)
+				a_2s(px, stack_a, stack_b, 1);
+			else
+				a_1s(rx, stack_a, "ra", 1);
+			it++;
+		}
+		it2++;
+	}
+}
+
+void	m_sort(s_stack *stack_a, s_stack *stack_b)
 {
 	t_node	temp;
 	int		it;
@@ -70,25 +90,13 @@ void	m_sort(s_stack *stack_a, s_stack *stack_b, t_config *conf)
 
 	it2 = 1;
 	indexer(stack_a);
-	while (stack_a != NULL)
-	{
-		it = 0;
-		while (it < stack_a->size)
-		{
-			if (stack_a->head->val < (stack_a->size/10)*it2)
-				a_2s(px, 1, stack_a, stack_b, conf, "pb");
-			else
-				a_1s(rx, 1, stack_a, conf, "ra");
-			it++;
-		}
-		it2++;
-	}
+	f_p_s(stack_a, stack_b);
 	while (stack_b->size)
 	{
 		if (dis_of_head(stack_b, stack_b->size - 1) > 0)
-			a_1s(rx, dis_of_head(stack_b, stack_b->size - 1),stack_b, conf, "rb");
+			a_1s(rx, stack_b, "rb", dis_of_head(stack_b, stack_b->size - 1));
 		else if (dis_of_head(stack_b, stack_b->size - 1) < 0)
-			a_1s(rrx, -1 * dis_of_head(stack_b, stack_b->size - 1), stack_b, conf, "rrb");
-		a_2s(px, 1, stack_b, stack_a, conf, "pa");
+			a_1s(rrx, stack_b, "rrb", -1 * dis_of_head(stack_b, stack_b->size - 1));
+		a_2s(px, stack_b, stack_a, 1);
 	}
 }
