@@ -61,15 +61,12 @@ void	indexer(s_stack *stack_a)
 	}
 }
 
-
-void	m_sort(s_stack *stack_a, s_stack *stack_b)
+void	f_p_s(s_stack *stack_a, s_stack *stack_b)
 {
-	t_node	temp;
 	int		it;
 	int		it2;
 
 	it2 = 1;
-	indexer(stack_a);
 	while (stack_a != NULL)
 	{
 		it = 0;
@@ -83,6 +80,17 @@ void	m_sort(s_stack *stack_a, s_stack *stack_b)
 		}
 		it2++;
 	}
+}
+
+void	m_sort(s_stack *stack_a, s_stack *stack_b)
+{
+	t_node	temp;
+	int		it;
+	int		it2;
+
+	it2 = 1;
+	indexer(stack_a);
+	f_p_s(stack_a, stack_b);
 	while (stack_b->size)
 	{
 		if (dis_of_head(stack_b, stack_b->size - 1) > 0)
