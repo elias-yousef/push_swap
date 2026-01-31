@@ -40,27 +40,21 @@ int	dis_of_head(s_stack *stack_x, int val)
 		return (f_d);
 }
 
-void	a_1s(void (*f)(s_stack *),int times, s_stack *stack_x, t_config *conf, char *ops)
+void	a_1s(void (*f)(s_stack *), s_stack *stack_x, char *ops, int times)
 {
-	if (ft_strncmp("ra", ops, 2) == 0)
-		conf->bench.ra += times;
-	else if (ft_strncmp("rb", ops, 2) == 0)
-		conf->bench.rb += times;
+	if (ft_strncmp("ra", ops, 2) == 0 || ft_strncmp("rb", ops, 2) == 0)
+		stack_x->rx += times;
 	else if (ft_strncmp("rr", ops, 2) == 0)
-		conf->bench.rr += times;
-	else if (ft_strncmp("rra", ops, 3) == 0)
-		conf->bench.rra += times;
-	else if (ft_strncmp("rrb", ops, 3) == 0)
-		conf->bench.rrb += times;
+		stack_x->rr += times;
+	else if (ft_strncmp("rra", ops, 3) == 0 || ft_strncmp("rrb", ops, 3) == 0)
+		stack_x->rrx += times;
 	else if (ft_strncmp("rrr", ops, 3) == 0)
-		conf->bench.rrr += times;
-	else if (ft_strncmp("sa", ops, 2) == 0)
-		conf->bench.sa += times;
-	else if (ft_strncmp("sb", ops, 2) == 0)
-		conf->bench.rb += times;
+		stack_x->rrr += times;
+	else if (ft_strncmp("sa", ops, 2) == 0 || ft_strncmp("sb", ops, 2) == 0)
+		stack_x->sx += times;
 	else if (ft_strncmp("ss", ops, 2) == 0)
-		conf->bench.ss += times;
-	while (times != 0)
+		stack_x->ss += times;
+	while (times)
 	{
 		f(stack_x);
 		//ft_printf("%s\n",ops);
@@ -68,16 +62,14 @@ void	a_1s(void (*f)(s_stack *),int times, s_stack *stack_x, t_config *conf, char
 	}
 }
 
-void	a_2s(void (*f)(s_stack *,s_stack *),int times, s_stack *stack_f, s_stack *stack_t, t_config *conf, char *ops)
+void	a_2s(void (*f)(s_stack *,s_stack *), s_stack *stack_f, s_stack *stack_t, int times)
 {
-	if (ft_strncmp("pa", ops, 2) == 0)
-		conf->bench.pa += times;
-	else if (ft_strncmp("pb", ops, 2) == 0)
-		conf->bench.pb += times;
-	while (times != 0)
+	stack_t->px += 1;
+	while (times)
 	{
 		f(stack_f, stack_t);
 		//ft_printf("%s\n",ops);
 		times--;
 	}
 }
+

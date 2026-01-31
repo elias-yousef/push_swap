@@ -6,7 +6,7 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:28 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/29 16:39:05 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/01/31 14:03:49 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,19 @@ typedef struct s_stack
 {
 	int		size;
 	t_node	*head;
+	int		sx;
+	int		ss;
+	int		px;
+	int		rx;
+	int		rr;
+	int		rrx;
+	int		rrr;
 }	s_stack;
 
-typedef struct s_bench
-{
-	int	status;
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
-}	t_bench;
 typedef struct s_config
 {
-	int		mod;
-	t_bench	bench;
+	int	mod;
+	int	bench;
 }	t_config;
 
 s_stack *stack_create();
@@ -69,7 +61,8 @@ void	clear_stack(s_stack *stack_x);
 double	compute_disorder(s_stack *stack_a);
 int	idx_val(s_stack *stack_a, int idx);
 int	dis_of_head(s_stack *stack_x, int val);
-void	a_1s(void (*f)(s_stack *),int times, s_stack *stack_x, t_config *conf, char *ops);
-void	a_2s(void (*f)(s_stack *,s_stack *),int times, s_stack *stack_f, s_stack *stack_t, t_config *conf, char *ops);
+void	a_1s(void (*f)(s_stack *), s_stack *stack_x, char *ops, int times);
+void	a_2s(void (*f)(s_stack *,s_stack *), s_stack *stack_f, s_stack *stack_t, int times);
+void	m_sort(s_stack *stack_a, s_stack *stack_b);
 
 #endif
