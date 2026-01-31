@@ -35,4 +35,6 @@ void	start_sort(s_stack *stack_a, t_config *conf)
 		else
 			c_sort(stack_a, &conf);
 	}
+	//if (conf->bench)
+	//	show_bench(stack_a, stack_b);
 }

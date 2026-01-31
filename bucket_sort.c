@@ -99,4 +99,6 @@ void	m_sort(s_stack *stack_a, s_stack *stack_b)
 			a_1s(rrx, stack_b, "rrb", -1 * dis_of_head(stack_b, stack_b->size - 1));
 		a_2s(px, stack_b, stack_a, 1);
 	}
+	clear_stack(stack_a);
+	clear_stack(stack_b);
 }
