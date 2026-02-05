@@ -19,7 +19,7 @@ int	num_lenth(char	*str)
 
 	it = 0;
 	count = 0;
-	if (str[it]== '-' || str[it] == '+')
+	if (str[it] == '-' || str[it] == '+')
 		it++;
 	while (str[it])
 	{

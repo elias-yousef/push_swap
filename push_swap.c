@@ -6,13 +6,13 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:21 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/31 13:30:46 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/05 10:01:30 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ValidNum(char *str)
+int	validnum(char *str)
 {
 	int		it;
 	long	num;
@@ -34,18 +34,18 @@ int	ValidNum(char *str)
 	return (1);
 }
 
-int	can_2add_if(s_stack *stack_a, char *str)
+int	can_2add_if(t_stack *stack_a, char *str)
 {
-	int	num;
+	int		num;
 	t_node	*temp;
-	int	it;
+	int		it;
 
 	it = 0;
 	num = 0;
-	if (ValidNum(str))
+	if (validnum(str))
 		num = (int)ft_atoi(str);
 	else
-		return(num);
+		return (num);
 	temp = stack_a->head;
 	while (it < stack_a->size)
 	{
@@ -77,7 +77,7 @@ int	check_config(char *str)
 		return (-1);
 }
 
-s_stack	*Parser(int argc, char **argv, t_config *conf , s_stack *stack_a)
+t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
 {
 	int		it;
 	char	*str;
@@ -105,18 +105,18 @@ s_stack	*Parser(int argc, char **argv, t_config *conf , s_stack *stack_a)
 	return (stack_a);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int			it;
 	char		*str;
 	t_config	conf;
-	s_stack		*stack_a;
+	t_stack		*stack_a;
 
 	conf.mod = 3;
 	stack_a = stack_create();
-	if (Parser(argc, argv, &conf, stack_a) == NULL)
+	if (parser(argc, argv, &conf, stack_a) == NULL)
 	{
-		//print ERROR\N ON stderror
+		ft_printf("ERROR\n");
 		clear_stack(stack_a);
 		return (1);
 	}
