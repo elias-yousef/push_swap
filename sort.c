@@ -12,22 +12,22 @@
 
 #include "push_swap.h"
 
-void	start_sort(s_stack *stack_a, t_config *conf)
+void	start_sort(t_stack *stack_a, t_config *conf)
 {
 	int		dis_ordered;
-	s_stack	*stack_b;
+	t_stack	*stack_b;
 
+	dis_ordered = compute_disorder(stack_a);
 	stack_b = stack_create();
 	dis_ordered = 0;
-	if (conf->mod = 0)
-		s_sort(stack_a);
-	else if (conf->mod = 1)
+	if (conf->mod == 0)
+		s_sort(stack_a, stack_b);
+	else if (conf->mod == 1)
 		m_sort(stack_a, stack_b);
-	else if (conf->mod = 2)
+	else if (conf->mod == 2)
 		c_sort(stack_a, stack_b);
 	else
 	{
-		dis_ordered = compute_disorder(stack_a);
 		if (dis_ordered < 0.2)
 			s_sort(stack_a, &conf);
 		else if (dis_ordered < 0.5)
@@ -35,4 +35,6 @@ void	start_sort(s_stack *stack_a, t_config *conf)
 		else
 			c_sort(stack_a, &conf);
 	}
+	if (conf->bench)
+		show_bench(stack_a, stack_b, conf, dis_ordered);
 }

@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-s_stack *stack_create()
+t_stack	*stack_create(void)
 {
-	s_stack *stack;
+	t_stack	*stack;
 
-	stack = malloc(sizeof(s_stack));
+	stack = malloc(sizeof(t_stack));
 	if (!stack)
 		return (NULL);
 	stack->head = NULL;
@@ -24,7 +24,7 @@ s_stack *stack_create()
 	return (stack);
 }
 
-void	add_node(s_stack *stack, int value)
+void	add_node(t_stack *stack, int value)
 {
 	t_node	*new_node;
 
@@ -48,9 +48,9 @@ void	add_node(s_stack *stack, int value)
 	stack->size++;
 }
 
-void	clear_stack(s_stack *stack_x)
+void	clear_stack(t_stack *stack_x)
 {
-	s_stack	*temp;
+	t_stack	*temp;
 	int		it;
 
 	it = 0;
@@ -66,9 +66,10 @@ void	clear_stack(s_stack *stack_x)
 	free(stack_x);
 }
 
-void	sx(s_stack *stack_x)
+void	sx(t_stack *stack_x)
 {
 	long	temp;
+
 	if (stack_x->size < 2)
 		return ;
 	temp = stack_x->head->val;
@@ -76,7 +77,7 @@ void	sx(s_stack *stack_x)
 	stack_x->head->next->val = temp;
 }
 
-void	ss(s_stack *stack_a, s_stack *stack_b)
+void	ss(t_stack *stack_a, t_stack *stack_b)
 {
 	sx(stack_a);
 	sx(stack_b);

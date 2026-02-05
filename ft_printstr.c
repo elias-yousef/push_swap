@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops2.c                                             :+:      :+:    :+:   */
+/*   ft_printstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 19:29:30 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/28 19:29:30 by mkhashan         ###   ########.fr       */
+/*   Created: 2026/02/05 08:40:57 by mkhashan          #+#    #+#             */
+/*   Updated: 2026/02/05 08:40:57 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rx(t_stack *stack_x)
+void	ft_putstr_fd(char *s, int fd)
 {
-	if (stack_x < 1)
+	int	len;
+
+	if (!s)
 		return ;
-	stack_x->head = stack_x->head->next;
+	len = ft_strlen(s);
+	write(fd, s, len);
 }
 
-void	rr(t_stack *s1, t_stack *s2)
+int	ft_printstr(char *str)
 {
-	rx(s1);
-	rx(s2);
-}
+	int	i;
 
-void	rrx(t_stack *stack_x)
-{
-	if (stack_x < 1)
-		return ;
-	stack_x->head = stack_x->head->prev;
-}
-
-void	rrr(t_stack *s1, t_stack *s2)
-{
-	rrx(s1);
-	rrx(s2);
+	if (!str)
+		str = "(null)";
+	i = 0;
+	while (str[i])
+		i++;
+	ft_putstr_fd(str, 2);
+	return (i);
 }

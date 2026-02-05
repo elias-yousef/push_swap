@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops2.c                                             :+:      :+:    :+:   */
+/*   ft_printfloat.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 19:29:30 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/28 19:29:30 by mkhashan         ###   ########.fr       */
+/*   Created: 2026/02/05 08:42:06 by mkhashan          #+#    #+#             */
+/*   Updated: 2026/02/05 08:42:06 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rx(t_stack *stack_x)
+int	ft_printfloat(float nbr)
 {
-	if (stack_x < 1)
-		return ;
-	stack_x->head = stack_x->head->next;
-}
+	int	res;
+	int	true_nbr;
 
-void	rr(t_stack *s1, t_stack *s2)
-{
-	rx(s1);
-	rx(s2);
-}
-
-void	rrx(t_stack *stack_x)
-{
-	if (stack_x < 1)
-		return ;
-	stack_x->head = stack_x->head->prev;
-}
-
-void	rrr(t_stack *s1, t_stack *s2)
-{
-	rrx(s1);
-	rrx(s2);
+	true_nbr = 100 * (int)nbr;
+	res = (int)(nbr * 100);
+	res = res - true_nbr;
+	ft_printnbr(true_nbr);
+	ft_printchar('.');
+	ft_printnbr(res);
+	return (1);
 }

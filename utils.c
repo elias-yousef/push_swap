@@ -12,12 +12,12 @@
 
 #include "push_swap.h"
 
-int	dis_of_head(s_stack *stack_x, int val)
+int	d(t_stack *stack_x, int val)
 {
 	t_node	*temp;
 	int		it;
-	int	f_d;
-	int	b_d;
+	int		f_d;
+	int		b_d;
 
 	it = 0;
 	f_d = 0;
@@ -40,7 +40,7 @@ int	dis_of_head(s_stack *stack_x, int val)
 		return (f_d);
 }
 
-void	a_1s(void (*f)(s_stack *), s_stack *stack_x, char *ops, int times)
+void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
 {
 	if (ft_strncmp("ra", ops, 2) == 0 || ft_strncmp("rb", ops, 2) == 0)
 		stack_x->rx += times;
@@ -57,19 +57,30 @@ void	a_1s(void (*f)(s_stack *), s_stack *stack_x, char *ops, int times)
 	while (times)
 	{
 		f(stack_x);
-		//ft_printf("%s\n",ops);
+		ft_printf("%s\n", ops);
 		times--;
 	}
 }
 
-void	a_2s(void (*f)(s_stack *,s_stack *), s_stack *stack_f, s_stack *stack_t, int times)
+void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int d)
 {
-	stack_t->px += 1;
-	while (times)
+	t->px += 1;
+	if (t > 0)
 	{
-		f(stack_f, stack_t);
-		//ft_printf("%s\n",ops);
-		times--;
+		while (d)
+		{
+			fn(f, t);
+			ft_printf("pa\n");
+			d--;
+		}
+	}
+	else
+	{
+		while (d < 0)
+		{
+			fn(f, t);
+			ft_printf("pb\n");
+			d++;
+		}
 	}
 }
-

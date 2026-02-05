@@ -1,39 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ops2.c                                             :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 19:29:30 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/01/28 19:29:30 by mkhashan         ###   ########.fr       */
+/*   Created: 2026/02/05 08:40:14 by mkhashan          #+#    #+#             */
+/*   Updated: 2026/02/05 08:40:14 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rx(t_stack *stack_x)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (stack_x < 1)
-		return ;
-	stack_x->head = stack_x->head->next;
+	write(fd, &c, sizeof(c));
 }
 
-void	rr(t_stack *s1, t_stack *s2)
+int	ft_printchar(char s)
 {
-	rx(s1);
-	rx(s2);
-}
-
-void	rrx(t_stack *stack_x)
-{
-	if (stack_x < 1)
-		return ;
-	stack_x->head = stack_x->head->prev;
-}
-
-void	rrr(t_stack *s1, t_stack *s2)
-{
-	rrx(s1);
-	rrx(s2);
+	ft_putchar_fd(s, 2);
+	return (1);
 }
