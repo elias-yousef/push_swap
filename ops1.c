@@ -51,6 +51,7 @@ void	add_node(t_stack *stack, int value)
 		new_node->prev = stack->head->prev;
 		new_node->next = stack->head;
 		stack->head->prev = new_node;
+		stack->head = new_node;
 	}
 	stack->size++;
 }

@@ -58,7 +58,7 @@ void	rrrr(t_stack *s1, t_stack *s2);
 
 long	ft_atoi(char *str);
 int		len(char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 float	compute_disorder(t_stack *stack_a);
 int		idx_val(t_stack *stack_a, int idx);
 int		d(t_stack *stack_x, int val);

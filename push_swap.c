@@ -20,6 +20,8 @@ int	validnum(char *str)
 	it = 0;
 	if (str[it] == '+' || str[it] == '-')
 		it++;
+	if (!str[it])
+		return (0);
 	while (str[it])
 	{
 		if (str[it] < '0' || str[it] > '9')
