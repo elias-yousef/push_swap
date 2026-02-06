@@ -6,17 +6,17 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:28 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/02/06 07:17:59 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/06 07:53:36 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <unistd.h>
+# include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdarg.h>
+# include <unistd.h>
 
 typedef struct s_node
 {
@@ -45,6 +45,7 @@ typedef struct s_config
 }	t_config;
 
 t_stack	*stack_create(void);
+void	clear_stack(t_stack *stack_x);
 void	add_node(t_stack *stack, int value);
 void	sx(t_stack *stack_x);
 void	ss(t_stack *stack_a, t_stack *stack_b);
@@ -55,25 +56,26 @@ void	rr(t_stack *s1, t_stack *s2);
 void	rrx(t_stack *stack_x);
 void	rrrr(t_stack *s1, t_stack *s2);
 
-int		ft_atoi(const char *str);
+long	ft_atoi(char *str);
 int		len(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-void	clear_stack(t_stack *stack_x);
 float	compute_disorder(t_stack *stack_a);
 int		idx_val(t_stack *stack_a, int idx);
 int		d(t_stack *stack_x, int val);
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times);
 void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int d);
 
+void	start_sort(t_stack *stack_a, t_config *conf);
 void	m_sort(t_stack *stack_a, t_stack *stack_b);
 void	s_sort(t_stack *a, t_stack *b);
 void	c_sort(t_stack *a, t_stack *b);
 void	tiny_sort(t_stack *a, t_stack *b);
 void	repair_sort(t_stack *a);
+void	bench(t_stack *stack_a, t_stack *stack_b, t_config *conf, float order);
 
 int		ft_printf(const char *format, ...);
 int		ft_printnbr(int nbr);
 int		ft_printstr(char *str);
-int		ft_printfloat(float nbr);
+int		ft_printfloat(double nbr);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:21 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/02/05 10:01:30 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/06 08:01:13 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int	validnum(char *str)
 
 	it = 0;
 	if (str[it] == '+' || str[it] == '-')
-	{
 		it++;
-	}
 	while (str[it])
 	{
 		if (str[it] < '0' || str[it] > '9')
@@ -34,7 +32,7 @@ int	validnum(char *str)
 	return (1);
 }
 
-int	can_2add_if(t_stack *stack_a, char *str)
+int	an_2add_if(t_stack *stack_a, char *str)
 {
 	int		num;
 	t_node	*temp;
@@ -64,7 +62,7 @@ int	check_config(char *str)
 
 	lenth = len(str);
 	if (lenth == 7 && ft_strncmp("--bench", str, lenth) == 0)
-		retrun (4);
+		return (4);
 	else if (lenth == 8 && ft_strncmp("--simple", str, lenth) == 0)
 		return (0);
 	else if (lenth == 8 && ft_strncmp("--medium", str, lenth) == 0)
@@ -73,8 +71,7 @@ int	check_config(char *str)
 		return (2);
 	else if (lenth == 10 && ft_strncmp("--adaptive", str, lenth) == 0)
 		return (3);
-	else
-		return (-1);
+	return (-1);
 }
 
 t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
@@ -86,14 +83,14 @@ t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
 	while (it < argc)
 	{
 		str = argv[it];
-		if (str[0] == '-' || str[1] == '-')
+		if (str[0] == '-' && str[1] == '-')
 		{
 			if (check_config(str) == -1)
 				return (NULL);
-			else if (chink_config(str) == 4)
+			else if (check_config(str) == 4)
 				conf->bench = 1;
 			else
-				conf->mod = chink_config(str);
+				conf->mod = check_config(str);
 		}
 		else
 		{
@@ -107,8 +104,6 @@ t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
 
 int	main(int argc, char **argv)
 {
-	int			it;
-	char		*str;
 	t_config	conf;
 	t_stack		*stack_a;
 
@@ -118,7 +113,8 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("ERROR\n");
 		clear_stack(stack_a);
-		return (1);
+		return (0);
 	}
 	start_sort(stack_a, &conf);
+	return (0);
 }

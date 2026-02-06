@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	s_init_sort(int *arr, int size)
+static void	s_init_sort(int *arr, int size)
 {
 	int	it;
 	int	temp;
@@ -34,7 +34,7 @@ void	s_init_sort(int *arr, int size)
 	}
 }
 
-void	map_val(t_stack *stack_a, int *arr)
+static void	map_val(t_stack *stack_a, int *arr)
 {
 	t_node	*temp;
 	int		it1;
@@ -54,7 +54,7 @@ void	map_val(t_stack *stack_a, int *arr)
 	}
 }
 
-void	indexer(t_stack *stack_a)
+static void	indexer(t_stack *stack_a)
 {
 	int		*arr_num;
 	t_node	*temp;
@@ -94,9 +94,9 @@ void	compare(t_stack *stack_a, t_stack *stack_b, int i)
 
 void	c_sort(t_stack *a, t_stack *b)
 {
-	int		max_bits;
-	int		i;
-	int		j;
+	int	max_bits;
+	int	i;
+	int	j;
 
 	indexer(a);
 	i = 0;

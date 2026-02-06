@@ -20,11 +20,9 @@ int	type_handlor(va_list arg, char conversion)
 	if (conversion == 'i' || conversion == 'd')
 		size = ft_printnbr(va_arg(arg, int));
 	else if (conversion == 'f')
-		size = ft_printfloat(va_arg(arg, float));
+		size = ft_printfloat(va_arg(arg, double));
 	else if (conversion == 's')
 		size = ft_printstr(va_arg(arg, char *));
-	else if (conversion == 'c')
-		size = ft_printchar(va_arg(arg, int));
 	else if (conversion == '%')
 		size = write(2, "%", 1);
 	else

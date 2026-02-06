@@ -15,11 +15,9 @@
 int	d(t_stack *stack_x, int val)
 {
 	t_node	*temp;
-	int		it;
 	int		f_d;
 	int		b_d;
 
-	it = 0;
 	f_d = 0;
 	b_d = 0;
 	temp = stack_x->head;
@@ -64,7 +62,6 @@ void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
 
 void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int n)
 {
-	t->px += n;
 	if (n > 0)
 	{
 		while (n)

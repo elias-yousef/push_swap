@@ -50,6 +50,6 @@ void	start_sort(t_stack *stack_a, t_config *conf)
 	else
 		adaptive(stack_a, stack_b, dis_ordered);
 	if (conf->bench)
-		show_bench(stack_a, stack_b, conf, dis_ordered);
+		bench(stack_a, stack_b, conf, dis_ordered);
 	clear_stacks(stack_a, stack_b);
 }
