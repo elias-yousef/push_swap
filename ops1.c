@@ -21,6 +21,13 @@ t_stack	*stack_create(void)
 		return (NULL);
 	stack->head = NULL;
 	stack->size = 0;
+	stack->px = 0;
+	stack->rr = 0;
+	stack->rrr = 0;
+	stack->rrx = 0;
+	stack->rx = 0;
+	stack->ss = 0;
+	stack->sx = 0;
 	return (stack);
 }
 
@@ -30,7 +37,7 @@ void	add_node(t_stack *stack, int value)
 
 	new_node = malloc(sizeof(*new_node));
 	if (!new_node)
-		return (NULL);
+		return ;
 	if (stack->size == 0)
 	{
 		new_node->next = new_node;
@@ -50,7 +57,7 @@ void	add_node(t_stack *stack, int value)
 
 void	clear_stack(t_stack *stack_x)
 {
-	t_stack	*temp;
+	t_node	*temp;
 	int		it;
 
 	it = 0;

@@ -32,7 +32,7 @@ int	validnum(char *str)
 	return (1);
 }
 
-int	an_2add_if(t_stack *stack_a, char *str)
+int	can_2add_if(t_stack *stack_a, char *str)
 {
 	int		num;
 	t_node	*temp;
@@ -112,6 +112,11 @@ int	main(int argc, char **argv)
 	if (parser(argc, argv, &conf, stack_a) == NULL)
 	{
 		ft_printf("ERROR\n");
+		clear_stack(stack_a);
+		return (0);
+	}
+	if (stack_a->size <= 1)
+	{
 		clear_stack(stack_a);
 		return (0);
 	}
