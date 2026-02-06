@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_printfloat(float nbr)
+int	ft_printfloat(double nbr)
 {
 	int	res;
 	int	true_nbr;
@@ -21,7 +21,7 @@ int	ft_printfloat(float nbr)
 	res = (int)(nbr * 100);
 	res = res - true_nbr;
 	ft_printnbr(true_nbr);
-	ft_printchar('.');
+	write(2,".",1);
 	ft_printnbr(res);
 	return (1);
 }

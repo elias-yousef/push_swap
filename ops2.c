@@ -14,7 +14,7 @@
 
 void	rx(t_stack *stack_x)
 {
-	if (stack_x < 1)
+	if (stack_x->size < 1)
 		return ;
 	stack_x->head = stack_x->head->next;
 }
@@ -27,7 +27,7 @@ void	rr(t_stack *s1, t_stack *s2)
 
 void	rrx(t_stack *stack_x)
 {
-	if (stack_x < 1)
+	if (stack_x->size < 1)
 		return ;
 	stack_x->head = stack_x->head->prev;
 }
