@@ -6,13 +6,13 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:21 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/02/05 10:01:30 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/06 08:01:13 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int validnum(char *str)
+int	validnum(char *str)
 {
 	int		it;
 	long	num;
@@ -20,21 +20,19 @@ int validnum(char *str)
 	it = 0;
 	if (str[it] == '+' || str[it] == '-')
 		it++;
-	if (!str[it])
-		return (0);
 	while (str[it])
 	{
 		if (str[it] < '0' || str[it] > '9')
 			return (0);
 		it++;
 	}
-	num = ft_atoi(str); 
+	num = ft_atoi(str);
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
 	return (1);
 }
 
-int	can_2add_if(t_stack *stack_a, char *str)
+int	an_2add_if(t_stack *stack_a, char *str)
 {
 	int		num;
 	t_node	*temp;
@@ -73,8 +71,7 @@ int	check_config(char *str)
 		return (2);
 	else if (lenth == 10 && ft_strncmp("--adaptive", str, lenth) == 0)
 		return (3);
-	else
-		return (-1);
+	return (-1);
 }
 
 t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
@@ -107,8 +104,6 @@ t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
 
 int	main(int argc, char **argv)
 {
-	int			it;
-	char		*str;
 	t_config	conf;
 	t_stack		*stack_a;
 
@@ -117,11 +112,6 @@ int	main(int argc, char **argv)
 	if (parser(argc, argv, &conf, stack_a) == NULL)
 	{
 		ft_printf("ERROR\n");
-		clear_stack(stack_a);
-		return (1);
-	}
-	if (stack_a->size == 0)
-	{
 		clear_stack(stack_a);
 		return (0);
 	}

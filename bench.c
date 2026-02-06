@@ -15,7 +15,7 @@
 char	*check_mod(float dis_order)
 {
 	if (dis_order < 0.2)
-		return ("O(n^2)");
+		return ("O(n)");
 	else if (dis_order < 0.5)
 		return ("O(n√n)");
 	else
@@ -36,19 +36,19 @@ int	total_ops(t_stack *stack_a, t_stack *stack_b)
 
 void	bench(t_stack *stack_a, t_stack *stack_b, t_config *conf, float order)
 {
-	ft_printf("disorder: %f%%\n", order);
+	ft_printf("[bench] disorder: %f%%\n", order * 100);
 	if (conf->mod == 0)
-		ft_printf("strategy: simple / O(n^2)\n");
+		ft_printf("[bench] strategy: simple / O(n^2)\n");
 	else if (conf->mod == 1)
-		ft_printf("strategy: medium / O(n√n)\n");
+		ft_printf("[bench] strategy: medium / O(n√n)\n");
 	else if (conf->mod == 2)
-		ft_printf("strategy: complex / O(nlogn)\n");
+		ft_printf("[bench] strategy: complex / O(nlogn)\n");
 	else
-		ft_printf("strategy: adaptive / O(%s)\n", check_mod(order));
-	ft_printf("total_ops: %i\n", total_ops(stack_a, stack_b));
-	ft_printf("sa: %i sb: %i ss: %i ", stack_a->sx, stack_b->sx, stack_a->ss);
-	ft_printf("pa: %i pb: %i\n", stack_a->px, stack_b->px);
-	ft_printf("ra: %i rb: %i rr: %i ", stack_a->rx, stack_b->rx, stack_a->rr);
-	ft_printf("rra: %i rrb: %i ", stack_a->rrx, stack_b->rrx);
-	ft_printf("rrr: %i\n", stack_a->rrr);
+		ft_printf("[bench] strategy: adaptive / O(%s)\n", check_mod(order));
+	ft_printf("[bench] total_ops: %i\n", total_ops(stack_a, stack_b));
+	ft_printf("[bench] sa: %i sb: %i ", stack_a->sx, stack_b->sx);
+	ft_printf("ss: %i pa: %i pb: %i\n", stack_a->ss, stack_a->px, stack_b->px);
+	ft_printf("[bench] ra: %i rb: %i ", stack_a->rx, stack_b->rx);
+	ft_printf("rr: %i rra: %i ", stack_a->rr, stack_a->rrx);
+	ft_printf("rrb: %i rrr: %i\n", stack_b->rrx, stack_a->rrr);
 }

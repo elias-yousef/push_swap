@@ -12,6 +12,27 @@
 
 #include "push_swap.h"
 
+void	clear_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	clear_stack(stack_a);
+	clear_stack(stack_b);
+}
+
+void	adaptive(t_stack *stack_a, t_stack *stack_b, float disorder)
+{
+	if (disorder < 0.2)
+	{
+		if (stack_a->size <= 5)
+			tiny_sort(stack_a, stack_b);
+		else
+			repair_sort(stack_a);
+	}
+	else if (disorder < 0.5)
+		m_sort(stack_a, stack_b);
+	else
+		c_sort(stack_a, stack_b);
+}
+
 void	start_sort(t_stack *stack_a, t_config *conf)
 {
 	int		dis_ordered;
@@ -27,14 +48,8 @@ void	start_sort(t_stack *stack_a, t_config *conf)
 	else if (conf->mod == 2)
 		c_sort(stack_a, stack_b);
 	else
-	{
-		if (dis_ordered < 0.2)
-			s_sort(stack_a, &conf);
-		else if (dis_ordered < 0.5)
-			m_sort(stack_a, &conf);
-		else
-			c_sort(stack_a, &conf);
-	}
+		adaptive(stack_a, stack_b, dis_ordered);
 	if (conf->bench)
-		show_bench(stack_a, stack_b, conf, dis_ordered);
+		bench(stack_a, stack_b, conf, dis_ordered);
+	clear_stacks(stack_a, stack_b);
 }

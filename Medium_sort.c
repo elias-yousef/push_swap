@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	s_init_sort(int *arr, int size)
+static void	s_init_sort(int *arr, int size)
 {
 	int	it;
 	int	temp;
@@ -34,7 +34,27 @@ void	s_init_sort(int *arr, int size)
 	}
 }
 
-void	indexer(t_stack *stack_a)
+static void	map_val(t_stack *stack_a, int *arr)
+{
+	t_node	*temp;
+	int		it1;
+	int		it2;
+
+	it1 = 0;
+	it2 = 0;
+	temp = stack_a->head;
+	while (it1 < stack_a->size)
+	{
+		it2 = 0;
+		while (temp->val != arr[it2])
+			it2++;
+		temp->val = it2;
+		temp = temp->next;
+		it1++;
+	}
+}
+
+static void	indexer(t_stack *stack_a)
 {
 	int		*arr_num;
 	t_node	*temp;
@@ -43,63 +63,59 @@ void	indexer(t_stack *stack_a)
 	it = 0;
 	temp = stack_a->head;
 	arr_num = malloc(sizeof(int) * stack_a->size);
+	if (!arr_num)
+		return ;
 	while (it < stack_a->size)
 	{
 		arr_num[it] = temp->val;
 		temp = temp->next;
 		it++;
 	}
-	it = 0;
 	s_init_sort(arr_num, stack_a->size);
-	temp = stack_a->head;
-	while (it < stack_a->size)
-	{
-		it = 0;
-		while (temp->val != arr_num[it])
-			it++;
-		temp->val = it;
-		temp = temp->next;
-	}
+	map_val(stack_a, arr_num);
+	free(arr_num);
 }
 
 void	f_p_s(t_stack *stack_a, t_stack *stack_b)
 {
-	int		it;
-	int		it2;
+	int	it;
+	int	bucket_n;
+	int	chunk;
+	int	size_snapshot;
 
-	it2 = 1;
-	while (stack_a != NULL)
+	bucket_n = 1;
+	chunk = (stack_a->size / 11) + 1;
+	if (stack_a->size <= 100)
+		chunk = (stack_a->size / 5) + 1;
+	while (stack_a->head)
 	{
 		it = 0;
-		while (it < stack_a->size)
+		size_snapshot = stack_a->size;
+		while (it < size_snapshot && stack_a->head)
 		{
-			if (stack_a->head->val < (stack_a->size / 10) * it2)
+			if (stack_a->head->val < chunk * bucket_n)
 				a_2s(px, stack_a, stack_b, 1);
 			else
 				a_1s(rx, stack_a, "ra", 1);
 			it++;
 		}
-		it2++;
+		bucket_n++;
 	}
 }
 
 void	m_sort(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node	temp;
-	int		it;
-	int		it2;
+	int	dis;
 
-	it2 = 1;
 	indexer(stack_a);
 	f_p_s(stack_a, stack_b);
 	while (stack_b->size)
 	{
-		if (d(stack_b, stack_b->size - 1) > 0)
-			a_1s(rx, stack_b, "rb", d(stack_b, stack_b->size - 1));
-		else if (d(stack_b, stack_b->size - 1) < 0)
-			a_1s(rrx, stack_b, "rrb", -1 * d(stack_b, stack_b->size - 1));
+		dis = d(stack_b, stack_b->size - 1);
+		if (dis > 0)
+			a_1s(rx, stack_b, "rb", dis);
+		else if (dis < 0)
+			a_1s(rrx, stack_b, "rrb", -1 * dis);
 		a_2s(px, stack_b, stack_a, 1);
 	}
-	clear_stack(stack_a);
-	clear_stack(stack_b);
 }
