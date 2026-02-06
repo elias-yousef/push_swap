@@ -55,7 +55,7 @@ void	rr(t_stack *s1, t_stack *s2);
 void	rrx(t_stack *stack_x);
 void	rrrr(t_stack *s1, t_stack *s2);
 
-int		ft_atoi(const char *str);
+long	ft_atoi(char *str);
 int		len(char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	clear_stack(t_stack *stack_x);

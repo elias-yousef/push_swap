@@ -12,23 +12,23 @@
 
 #include "push_swap.h"
 
-int	validnum(char *str)
+int validnum(char *str)
 {
 	int		it;
 	long	num;
 
 	it = 0;
 	if (str[it] == '+' || str[it] == '-')
-	{
 		it++;
-	}
+	if (!str[it])
+		return (0);
 	while (str[it])
 	{
 		if (str[it] < '0' || str[it] > '9')
 			return (0);
 		it++;
 	}
-	num = ft_atoi(str);
+	num = ft_atoi(str); 
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
 	return (1);
@@ -64,7 +64,7 @@ int	check_config(char *str)
 
 	lenth = len(str);
 	if (lenth == 7 && ft_strncmp("--bench", str, lenth) == 0)
-		retrun (4);
+		return (4);
 	else if (lenth == 8 && ft_strncmp("--simple", str, lenth) == 0)
 		return (0);
 	else if (lenth == 8 && ft_strncmp("--medium", str, lenth) == 0)
@@ -86,14 +86,14 @@ t_stack	*parser(int argc, char **argv, t_config *conf, t_stack *stack_a)
 	while (it < argc)
 	{
 		str = argv[it];
-		if (str[0] == '-' || str[1] == '-')
+		if (str[0] == '-' && str[1] == '-')
 		{
 			if (check_config(str) == -1)
 				return (NULL);
-			else if (chink_config(str) == 4)
+			else if (check_config(str) == 4)
 				conf->bench = 1;
 			else
-				conf->mod = chink_config(str);
+				conf->mod = check_config(str);
 		}
 		else
 		{
@@ -120,5 +120,11 @@ int	main(int argc, char **argv)
 		clear_stack(stack_a);
 		return (1);
 	}
+	if (stack_a->size == 0)
+	{
+		clear_stack(stack_a);
+		return (0);
+	}
 	start_sort(stack_a, &conf);
+	return (0);
 }
