@@ -6,7 +6,7 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:28 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/02/06 06:35:57 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/06 07:17:59 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	repair_sort(t_stack *a);
 int		ft_printf(const char *format, ...);
 int		ft_printnbr(int nbr);
 int		ft_printstr(char *str);
-int		ft_printchar(char s);
 int		ft_printfloat(float nbr);
 
 #endif

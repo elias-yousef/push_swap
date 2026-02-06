@@ -36,7 +36,7 @@ int	total_ops(t_stack *stack_a, t_stack *stack_b)
 
 void	bench(t_stack *stack_a, t_stack *stack_b, t_config *conf, float order)
 {
-	ft_printf("[bench] disorder: %f%%\n", order);
+	ft_printf("[bench] disorder: %f%%\n", order * 100);
 	if (conf->mod == 0)
 		ft_printf("[bench] strategy: simple / O(n^2)\n");
 	else if (conf->mod == 1)
