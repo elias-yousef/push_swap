@@ -23,7 +23,7 @@ int	get_min_index(t_stack *a)
 	index = 0;
 	temp = a->head;
 	min = temp->val;
-	while (i < a->size - 1)
+	while (i < a->size)
 	{
 		temp = temp->next;
 		if (min > temp->val)
@@ -39,21 +39,9 @@ int	get_min_index(t_stack *a)
 void	bring_to_top(t_stack *a, int index)
 {
 	if (index <= a->size / 2)
-	{
-		while (index > 0)
-		{
-			rx(a);
-			index--;
-		}
-	}
+		a_1s(rx, a, "ra", index);
 	else
-	{
-		while (index < a->size)
-		{
-			rrx(a);
-			index++;
-		}
-	}
+		a_1s(rrx, a, "rra", a->size - index);
 }
 
 void	s_sort(t_stack *a, t_stack *b)
@@ -64,8 +52,8 @@ void	s_sort(t_stack *a, t_stack *b)
 	{
 		index = get_min_index(a);
 		bring_to_top(a, index);
-		px(a, b);
+		a_2s(px, a, b, -1);
 	}
 	while (b->size > 0)
-		px(b, a);
+		a_2s(px, b, a, 1);
 }

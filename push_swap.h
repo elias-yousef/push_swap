@@ -6,7 +6,7 @@
 /*   By: mkhashan <mkhashan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 11:56:28 by mkhashan          #+#    #+#             */
-/*   Updated: 2026/02/05 10:04:00 by mkhashan         ###   ########.fr       */
+/*   Updated: 2026/02/06 06:35:57 by mkhashan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int d);
 void	m_sort(t_stack *stack_a, t_stack *stack_b);
 void	s_sort(t_stack *a, t_stack *b);
 void	c_sort(t_stack *a, t_stack *b);
+void	tiny_sort(t_stack *a, t_stack *b);
+void	repair_sort(t_stack *a);
 
 int		ft_printf(const char *format, ...);
 int		ft_printnbr(int nbr);

@@ -35,9 +35,9 @@ int	d(t_stack *stack_x, int val)
 		b_d -= 1;
 	}
 	if (-1 * b_d > f_d)
-		return (b_d);
-	else
 		return (f_d);
+	else
+		return (b_d);
 }
 
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
@@ -62,25 +62,27 @@ void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
 	}
 }
 
-void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int d)
+void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int n)
 {
-	t->px += 1;
-	if (t > 0)
+	t->px += n;
+	if (n > 0)
 	{
-		while (d)
+		while (n)
 		{
 			fn(f, t);
+			t->px++;
 			ft_printf("pa\n");
-			d--;
+			n--;
 		}
 	}
 	else
 	{
-		while (d < 0)
+		while (n < 0)
 		{
 			fn(f, t);
+			t->px++;
 			ft_printf("pb\n");
-			d++;
+			n++;
 		}
 	}
 }
