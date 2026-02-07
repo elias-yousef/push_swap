@@ -35,6 +35,8 @@ void	px(t_stack *from, t_stack *to)
 {
 	t_node	*temp;
 
+	if (!from || !to || !from->head)
+		return ;
 	if (from->size < 1)
 		return ;
 	temp = case_one(from);
@@ -54,4 +56,5 @@ void	px(t_stack *from, t_stack *to)
 	}
 	from->size -= 1;
 	to->size += 1;
+	to->px += 1;
 }

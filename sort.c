@@ -35,12 +35,11 @@ void	adaptive(t_stack *stack_a, t_stack *stack_b, float disorder)
 
 void	start_sort(t_stack *stack_a, t_config *conf)
 {
-	int		dis_ordered;
+	float	dis_ordered;
 	t_stack	*stack_b;
 
 	dis_ordered = compute_disorder(stack_a);
 	stack_b = stack_create();
-	dis_ordered = 0;
 	if (conf->mod == 0)
 		s_sort(stack_a, stack_b);
 	else if (conf->mod == 1)

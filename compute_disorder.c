@@ -22,6 +22,7 @@ int	idx_val(t_stack *stack_a, int idx)
 	while (it < idx)
 	{
 		temp = temp->next;
+		it++;
 	}
 	return (temp->val);
 }
@@ -42,11 +43,13 @@ float	compute_disorder(t_stack *stack_a)
 		while (it2 < stack_a->size)
 		{
 			if (idx_val(stack_a, it1) > idx_val(stack_a, it2))
+			{
 				mistakes += 1;
+			}
 			total += 1;
 			it2++;
 		}
 		it1++;
 	}
-	return ((float)(mistakes / total));
+	return ((float)((float)mistakes / total));
 }

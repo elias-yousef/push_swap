@@ -40,46 +40,28 @@ int	d(t_stack *stack_x, int val)
 
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
 {
-	if (ft_strncmp("ra", ops, 2) == 0 || ft_strncmp("rb", ops, 2) == 0)
-		stack_x->rx += times;
-	else if (ft_strncmp("rr", ops, 2) == 0)
-		stack_x->rr += times;
-	else if (ft_strncmp("rra", ops, 3) == 0 || ft_strncmp("rrb", ops, 3) == 0)
-		stack_x->rrx += times;
-	else if (ft_strncmp("rrr", ops, 3) == 0)
-		stack_x->rrr += times;
-	else if (ft_strncmp("sa", ops, 2) == 0 || ft_strncmp("sb", ops, 2) == 0)
-		stack_x->sx += times;
-	else if (ft_strncmp("ss", ops, 2) == 0)
-		stack_x->ss += times;
 	while (times)
 	{
 		f(stack_x);
-		ft_printf("%s\n", ops);
+		write(1, ops, len(ops));
+		write(1, "\n", 1);
 		times--;
 	}
 }
 
-void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int n)
+void	a_2s(t_stack *f, t_stack *t, char *ops, int n)
 {
-	if (n > 0)
+	while (n--)
 	{
-		while (n)
-		{
-			fn(f, t);
-			t->px++;
-			ft_printf("pa\n");
-			n--;
-		}
-	}
-	else
-	{
-		while (n < 0)
-		{
-			fn(f, t);
-			t->px++;
-			ft_printf("pb\n");
-			n++;
-		}
+		if (ops[0] == 'p')
+			px(f, t);
+		else if (ft_strncmp("rrr", ops, 3) == 0)
+			rrr(f, t);
+		else if (ops[0] == 's')
+			ss(f, t);
+		else
+			rr(f, t);
+		write(1, ops, len(ops));
+		write(1, "\n", 1);
 	}
 }

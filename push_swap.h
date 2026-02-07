@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -54,16 +55,16 @@ void	px(t_stack *from, t_stack *to);
 void	rx(t_stack *stack_x);
 void	rr(t_stack *s1, t_stack *s2);
 void	rrx(t_stack *stack_x);
-void	rrrr(t_stack *s1, t_stack *s2);
+void	rrr(t_stack *s1, t_stack *s2);
 
 long	ft_atoi(char *str);
 int		len(char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 float	compute_disorder(t_stack *stack_a);
 int		idx_val(t_stack *stack_a, int idx);
 int		d(t_stack *stack_x, int val);
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times);
-void	a_2s(void (*fn)(t_stack *, t_stack *), t_stack *f, t_stack *t, int d);
+void	a_2s(t_stack *f, t_stack *t, char *ops, int n);
 
 void	start_sort(t_stack *stack_a, t_config *conf);
 void	m_sort(t_stack *stack_a, t_stack *stack_b);
