@@ -52,8 +52,8 @@ void	s_sort(t_stack *a, t_stack *b)
 	{
 		index = get_min_index(a);
 		bring_to_top(a, index);
-		a_2s(px, a, b, -1);
+		a_2s(a, b, "pb", 1);
 	}
 	while (b->size > 0)
-		a_2s(px, b, a, 1);
+		a_2s(b, a, "pa", 1);
 }

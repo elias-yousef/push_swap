@@ -23,7 +23,7 @@ static int	get_min_pos(t_stack *a)
 	min = temp->val;
 	min_pos = 0;
 	i = 0;
-	while (temp)
+	while (i < a->size)
 	{
 		if (temp->val < min)
 		{
@@ -78,11 +78,11 @@ void	sort_five(t_stack *a, t_stack *b)
 		else
 			while (min_pos++ < a->size)
 				a_1s(rrx, a, "rra", 1);
-		a_2s(px, a, b, -1);
+		a_2s(a, b, "pb", 1);
 	}
 	sort_three(a);
 	while (b->size > 0)
-		a_2s(px, b, a, 1);
+		a_2s(b, a, "pa", 1);
 }
 
 void	tiny_sort(t_stack *a, t_stack *b)

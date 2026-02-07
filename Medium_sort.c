@@ -60,11 +60,11 @@ static void	indexer(t_stack *stack_a)
 	t_node	*temp;
 	int		it;
 
-	it = 0;
-	temp = stack_a->head;
 	arr_num = malloc(sizeof(int) * stack_a->size);
 	if (!arr_num)
-		return ;
+		exit(1);
+	it = 0;
+	temp = stack_a->head;
 	while (it < stack_a->size)
 	{
 		arr_num[it] = temp->val;
@@ -94,7 +94,7 @@ void	f_p_s(t_stack *stack_a, t_stack *stack_b)
 		while (it < size_snapshot && stack_a->head)
 		{
 			if (stack_a->head->val < chunk * bucket_n)
-				a_2s(px, stack_a, stack_b, 1);
+				a_2s(stack_a, stack_b, "pb", 1);
 			else
 				a_1s(rx, stack_a, "ra", 1);
 			it++;
@@ -116,6 +116,6 @@ void	m_sort(t_stack *stack_a, t_stack *stack_b)
 			a_1s(rx, stack_b, "rb", dis);
 		else if (dis < 0)
 			a_1s(rrx, stack_b, "rrb", -1 * dis);
-		a_2s(px, stack_b, stack_a, 1);
+		a_2s(stack_b, stack_a, "pa", 1);
 	}
 }
