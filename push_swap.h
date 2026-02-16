@@ -63,6 +63,7 @@ int		ft_strncmp(char *s1, char *s2, size_t n);
 float	compute_disorder(t_stack *stack_a);
 int		idx_val(t_stack *stack_a, int idx);
 int		d(t_stack *stack_x, int val);
+int		is_sorted(t_stack *a);
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times);
 void	a_2s(t_stack *f, t_stack *t, char *ops, int n);
 
@@ -71,7 +72,7 @@ void	m_sort(t_stack *stack_a, t_stack *stack_b);
 void	s_sort(t_stack *a, t_stack *b);
 void	c_sort(t_stack *a, t_stack *b);
 void	tiny_sort(t_stack *a, t_stack *b);
-void	repair_sort(t_stack *a);
+void	repair_sort(t_stack *a, t_stack *b);
 void	bench(t_stack *stack_a, t_stack *stack_b, t_config *conf, float order);
 
 int		ft_printf(const char *format, ...);

@@ -25,7 +25,7 @@ void	adaptive(t_stack *stack_a, t_stack *stack_b, float disorder)
 		if (stack_a->size <= 5)
 			tiny_sort(stack_a, stack_b);
 		else
-			repair_sort(stack_a);
+			repair_sort(stack_a, stack_b);
 	}
 	else if (disorder < 0.5)
 		m_sort(stack_a, stack_b);

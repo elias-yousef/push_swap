@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	validnum(char *str)
 {
@@ -115,7 +114,6 @@ int	main(int argc, char **argv)
 	stack_a = stack_create();
 	if (parser(argc, argv, &conf, stack_a) == NULL)
 	{
-		ft_printf("ERROR\n");
 		clear_stack(stack_a);
 		return (0);
 	}
