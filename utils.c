@@ -38,6 +38,22 @@ int	d(t_stack *stack_x, int val)
 		return (b_d);
 }
 
+int	is_sorted(t_stack *a)
+{
+	t_node	*temp;
+
+	if (!a || !a->head)
+		return (1);
+	temp = a->head;
+	while (temp->next)
+	{
+		if (temp->val > temp->next->val)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
 void	a_1s(void (*f)(t_stack *), t_stack *stack_x, char *ops, int times)
 {
 	while (times)
