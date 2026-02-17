@@ -115,6 +115,7 @@ int	main(int argc, char **argv)
 	if (parser(argc, argv, &conf, stack_a) == NULL)
 	{
 		clear_stack(stack_a);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	if (compute_disorder(stack_a) == 0.0)
